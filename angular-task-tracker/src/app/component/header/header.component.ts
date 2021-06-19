@@ -8,6 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+export class HeaderComponent implements OnInit {
+
+  title: string = 'Task-Tracking App!!';
+  showAddTask: boolean;
+  subscription: Subscription;
+
+  constructor(private uiService: UiService, private router: Router) {
     this.subscription = this.uiService.onToggle().subscribe((val) => (this.showAddTask=val));
   }
 
