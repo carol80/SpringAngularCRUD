@@ -1,3 +1,3 @@
 <app-button color="{{ showAddEmployee ? 'Red' : 'Black' }}" text="{{ showAddEmployee ? 'CLOSE' : 'ADD' }}" (click)="onClick()"></app-button>
-
-<app-employee-item *ngFor="let employee of employees" [employee]="employee" ></app-employee-item>
+<app-add-employee (addEmp)="addEmployee($event)"></app-add-employee>
+<app-employee-item *ngFor="let employee of employees" [employee]="employee" (updateEmployee)="updateEmployee(employee)" (deleteEmployee)="deleteEmployee(employee)"></app-employee-item>

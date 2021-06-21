@@ -13,12 +13,24 @@ export class WorkspaceComponent implements OnInit {
 
   constructor(private empService: EmpServiceService) { }
 
-  ngOnInit(): void {
-    this.empService.getAllEmployees().subscribe((e)=>(this.employees = e));
-  }
-
   onClick(){
     console.log("toggle!!");
   }
 
+  ngOnInit(): void {
+    this.empService.getAllEmployees().subscribe((e)=>(this.employees = e));
+  }
+
+  deleteEmployee(employee : Employee){
+    this.empService.deleteEmployee(employee).subscribe(()=>(this.employees = this.employees.filter((e)=>(e.id!=employee.id))));
+  }
+
+  updateEmployee(employee: Employee){
+    // this.empService.updateEmployee(employee).subscribe();
+    console.log(employee);
+  }
+
+  addEmployee(employee: Employee){
+    this.empService.addEmployee(employee).subscribe((e) => this.employees.push(e));
+  }
 }

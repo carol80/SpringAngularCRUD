@@ -3,6 +3,11 @@ import { Observable } from 'rxjs';
 import { Employee } from '../Employee';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-type' : 'application/json',
+  }),
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +20,17 @@ export class EmpServiceService {
 
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiUrl);
+  }
+
+  deleteEmployee(employee: Employee): Observable<Employee>{
+    return this.http.delete<Employee>(`${this.apiUrl}/${employee.id}`);
+  }
+
+  addEmployee(employee: Employee): Observable<Employee>{
+    return this.http.post<Employee>(this.apiUrl, employee, httpOptions);
+  }
+
+  updateEmployee(employee: Employee): Observable<Employee>{
+    return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee, httpOptions);
   }
 }

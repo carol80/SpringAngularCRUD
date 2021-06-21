@@ -1,4 +1,4 @@
 <div class="task">
-    <h4>{{ employee.id }}</h4>
-    <h4>{{ employee.name }}</h4>
+    <h3>{{ employee.id }} <fa-icon [ngStyle]="{ 'color': 'Red' }" [icon]="faTimes" (click)="onDelete(employee)"></fa-icon></h3>
+    <h3>{{ employee.name }} <fa-icon [ngStyle]="{ 'color': 'Black' }" [icon]="faPen" (click)="onUpdate(employee)"></fa-icon></h3>
 </div>
