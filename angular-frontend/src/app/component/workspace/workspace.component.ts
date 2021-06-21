@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpServiceService } from 'src/app/service/emp-service.service';
+import { EmpUiService } from 'src/app/service/emp-ui.service';
 import { Employee } from '../../Employee'; 
 
 @Component({
@@ -11,10 +12,10 @@ export class WorkspaceComponent implements OnInit {
   showAddEmployee: boolean = false;
   employees: Employee[] = [];
 
-  constructor(private empService: EmpServiceService) { }
+  constructor(private empService: EmpServiceService, private uiService: EmpUiService) { }
 
   onClick(){
-    console.log("toggle!!");
+    this.uiService.toggleAddTask();
   }
 
   ngOnInit(): void {
