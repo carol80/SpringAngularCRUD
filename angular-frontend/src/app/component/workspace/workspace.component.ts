@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EmpServiceService } from 'src/app/service/emp-service.service';
 import { EmpUiService } from 'src/app/service/emp-ui.service';
 import { Employee } from '../../Employee'; 
@@ -9,12 +9,14 @@ import { Employee } from '../../Employee';
   styleUrls: ['./workspace.component.css']
 })
 export class WorkspaceComponent implements OnInit {
+  @Input() emp: Employee;
   showAddEmployee: boolean = false;
   employees: Employee[] = [];
 
   constructor(private empService: EmpServiceService, private uiService: EmpUiService) { }
 
   onClick(){
+    this.showAddEmployee = !this.showAddEmployee;
     this.uiService.toggleAddTask();
   }
 
@@ -26,9 +28,8 @@ export class WorkspaceComponent implements OnInit {
     this.empService.deleteEmployee(employee).subscribe(()=>(this.employees = this.employees.filter((e)=>(e.id!=employee.id))));
   }
 
-  updateEmployee(employee: Employee){
-    // this.empService.updateEmployee(employee).subscribe();
-    console.log(employee);
+  updateEmployee(emp: Employee){
+    this.empService.updateEmployee(emp).subscribe((e)=>(this.employees = this.employees.map(e => e.id == emp.id ? emp : e)));
   }
 
   addEmployee(employee: Employee){

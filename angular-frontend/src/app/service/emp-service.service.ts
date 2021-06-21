@@ -30,7 +30,7 @@ export class EmpServiceService {
     return this.http.post<Employee>(this.apiUrl, employee, httpOptions);
   }
 
-  updateEmployee(employee: Employee): Observable<Employee>{
+  updateEmployee(employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee, httpOptions);
   }
 }

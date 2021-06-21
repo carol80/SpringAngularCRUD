@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class EmpUiService {
 
   private showAddEmployee: boolean = false;
+  private showUpdatedEmployee: boolean = false;
   private Subject = new Subject<any>();
 
   constructor() { }
@@ -14,6 +15,11 @@ export class EmpUiService {
   toggleAddTask(): void {
     this.showAddEmployee = !this.showAddEmployee;
     this.Subject.next(this.showAddEmployee); 
+  }
+
+  toggleUpdateTask(): void{
+    this.showUpdatedEmployee = !this.showUpdatedEmployee;
+    this.Subject.next(this.showUpdatedEmployee); 
   }
 
   onToggle(): Observable<any> {

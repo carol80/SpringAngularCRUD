@@ -9,8 +9,12 @@
       "name": "w2s"
     },
     {
-      "name": "KSI",
-      "id": 3
+      "id": 3,
+      "name": "KSi"
+    },
+    {
+      "name": "Miniminter",
+      "id": 4
     }
   ]
 }

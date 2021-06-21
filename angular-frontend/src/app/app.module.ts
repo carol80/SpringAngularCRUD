@@ -11,6 +11,7 @@ import { ButtonComponent } from './component/tools/button/button.component';
 import { WorkspaceComponent } from './component/workspace/workspace.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddEmployeeComponent } from './component/add-employee/add-employee.component';
+import { FormComponent } from './component/tools/form/form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddEmployeeComponent } from './component/add-employee/add-employee.comp
     EmployeeItemComponent,
     ButtonComponent,
     WorkspaceComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
