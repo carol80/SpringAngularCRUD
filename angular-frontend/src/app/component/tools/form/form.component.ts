@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
   subscription: Subscription;
 
   constructor(private uiService: EmpUiService) { 
-    this.subscription = this.uiService.onToggle().subscribe((val) => (this.showUpdateEmployee = val));
+    this.subscription = this.uiService.onToggleUpdate().subscribe((val) => (this.showUpdateEmployee = val));
   }
 
   ngOnInit(): void {

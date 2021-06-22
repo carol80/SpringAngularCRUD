@@ -9,6 +9,7 @@ export class EmpUiService {
   private showAddEmployee: boolean = false;
   private showUpdatedEmployee: boolean = false;
   private Subject = new Subject<any>();
+  private Subject1 = new Subject<any>();
 
   constructor() { }
 
@@ -19,10 +20,14 @@ export class EmpUiService {
 
   toggleUpdateTask(): void{
     this.showUpdatedEmployee = !this.showUpdatedEmployee;
-    this.Subject.next(this.showUpdatedEmployee); 
+    this.Subject1.next(this.showUpdatedEmployee); 
   }
 
   onToggle(): Observable<any> {
     return this.Subject.asObservable();
+  }
+
+  onToggleUpdate(): Observable<any> {
+    return this.Subject1.asObservable();
   }
 }

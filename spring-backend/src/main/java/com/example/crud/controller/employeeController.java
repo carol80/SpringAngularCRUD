@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.crud.entity.Employee;
 import com.example.crud.service.employeeServiceInterface;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1")
 public class employeeController {
@@ -48,8 +50,8 @@ public class employeeController {
 		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
+	@PutMapping("/update/{empId}")
+	public ResponseEntity<Employee> updateEmployee(@PathVariable("empId") Long EmpId, @RequestBody Employee employee) {
 		Employee savedEmployee = empServiceInterface.addEmployee(employee);
 		return new ResponseEntity<Employee>(savedEmployee, HttpStatus.CREATED);
 	}
